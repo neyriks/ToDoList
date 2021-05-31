@@ -20,15 +20,12 @@ const App = {
     },
   },
   mounted() {
-    console.log("App mounted!");
-    console.log(localStorage);
     if (localStorage.getItem("notes"))
       this.notes = JSON.parse(localStorage.getItem("notes"));
   },
   watch: {
     notes: {
       handler() {
-        console.log("Notes changed!");
         localStorage.setItem("notes", JSON.stringify(this.notes));
       },
       deep: true,
