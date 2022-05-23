@@ -9,7 +9,10 @@
   </head>
   <div class="container" id="app" v-cloak>
     <div class="card">
-      <h1>{{ title}}</h1>
+      <div class="title__wrapper">
+        <h1>{{ title}}</h1>
+        <button class="btn" type="button" name="button" @click="clearNotes()">Очистить список</button>
+      </div>
       <div class="form-control">
         <input
           type="text"
@@ -19,11 +22,16 @@
         />
         <button class="btn" @click="addNewNote">Добавить</button>
         <ul class="list" v-if="notes.length !== 0">
-          <li class="list-item" v-for="(note, i) in notes">
-            <span :class="['bold', {'primary': note.length > 5}]"
+          <li class="list-item" v-for="(note, i) in notes" :key="i">
+            <span :class="['bold', {'primary': note?.length > 5}, { done: checkedNotes.includes(note) }]"
               >({{ i + 1 }}) {{ toUpperCase(note) }}
+              <input
+                type="checkbox"
+                v-model="checkedNotes"
+                :value="note"
+              >
             </span>
-            <button class="btn danger" @click="removeNote(i)">удалить</button>
+            <button class="btn danger" @click="removeNote(i, note)">удалить</button>
           </li>
           <hr />
         </ul>

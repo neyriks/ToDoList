@@ -116,6 +116,12 @@ h3 {
   padding-top: 5rem;
 }
 
+.title__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .form-control {
   position: relative;
   margin-bottom: 0.5rem;
@@ -169,6 +175,20 @@ h3 {
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 0;
+}
+
+.list-item span {
+  display: flex;
+  align-items: center;
+}
+
+.list-item input {
+  width: auto;
+  margin-left: 10px;
+}
+
+.done {
+  text-decoration: line-through;
 }
 [v-cloak] {
   display: none;
